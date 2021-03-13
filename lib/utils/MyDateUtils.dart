@@ -1,7 +1,7 @@
 import 'package:persian_datetime_picker/utils/consts.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
-class DateUtils {
+class MyDateUtils {
   dynamic disable;
   String min;
   String max;

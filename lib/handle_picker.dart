@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/date_picker.dart';
 import 'package:persian_datetime_picker/month_picker.dart';
 import 'package:persian_datetime_picker/time_picker.dart';
-import 'package:persian_datetime_picker/utils/date.dart';
+import 'package:persian_datetime_picker/utils/MyDateUtils.dart';
 import 'package:persian_datetime_picker/year_picker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 import 'utils/consts.dart';
@@ -52,13 +52,13 @@ class _HandlePickerState extends State<HandlePicker>
       switch (widget.type) {
         case PickerType.rangedate:
           initDateTime =
-              '${DateUtils.jalaliToString(now)} # ${DateUtils.jalaliToString(now)}';
+              '${MyDateUtils.jalaliToString(now)} # ${MyDateUtils.jalaliToString(now)}';
           break;
         case PickerType.datetime:
-          initDateTime = '${DateUtils.jalaliToString(now)} 00:00';
+          initDateTime = '${MyDateUtils.jalaliToString(now)} 00:00';
           break;
         case PickerType.date:
-          initDateTime = '${DateUtils.jalaliToString(now)}';
+          initDateTime = '${MyDateUtils.jalaliToString(now)}';
           break;
         case PickerType.time:
           initDateTime = '00:00';
@@ -80,35 +80,35 @@ class _HandlePickerState extends State<HandlePicker>
         var splitStartDateTime = splitInitDateTimes[0].split(' ');
         var splitEndDateTime = splitInitDateTimes[1].split(' ');
         startSelectedInitDate =
-            splitStartDateTime.length > 0 ? splitStartDateTime[0] : null;
+        splitStartDateTime.length > 0 ? splitStartDateTime[0] : null;
         startSelectedInitTime =
-            splitStartDateTime.length > 1 ? splitStartDateTime[1] : null;
+        splitStartDateTime.length > 1 ? splitStartDateTime[1] : null;
 
         endSelectedInitDate =
-            splitEndDateTime.length > 0 ? splitEndDateTime[0] : null;
+        splitEndDateTime.length > 0 ? splitEndDateTime[0] : null;
         endSelectedInitTime =
-            splitEndDateTime.length > 1 ? splitEndDateTime[1] : null;
+        splitEndDateTime.length > 1 ? splitEndDateTime[1] : null;
       } else {
         startSelectedInitDate = '${Jalali.now()}';
         endSelectedInitDate = '${Jalali.now()}';
         startSelectedInitTime =
-            "${DateTime.now().hour}:${DateTime.now().minute}";
+        "${DateTime.now().hour}:${DateTime.now().minute}";
         endSelectedInitTime = "${DateTime.now().hour}:${DateTime.now().minute}";
       }
     } else {
       if (initDateTime != null) {
         var splitDateTime = initDateTime.split(' ');
         startSelectedInitDate =
-            splitDateTime.length > 0 ? splitDateTime[0] : null;
+        splitDateTime.length > 0 ? splitDateTime[0] : null;
         endSelectedInitDate =
-            splitDateTime.length > 0 ? splitDateTime[0] : null;
+        splitDateTime.length > 0 ? splitDateTime[0] : null;
         endSelectedInitTime =
-            splitDateTime.length > 1 ? splitDateTime[1] : null;
+        splitDateTime.length > 1 ? splitDateTime[1] : null;
       } else {
         startSelectedInitDate = '${Jalali.now()}';
         endSelectedInitDate = '${Jalali.now()}';
         startSelectedInitTime =
-            "${DateTime.now().hour}:${DateTime.now().minute}";
+        "${DateTime.now().hour}:${DateTime.now().minute}";
         endSelectedInitTime = "${DateTime.now().hour}:${DateTime.now().minute}";
       }
     }
@@ -192,9 +192,9 @@ class _HandlePickerState extends State<HandlePicker>
               onSelectDate: (date) {
                 var splitStartDate = startSelectedInitDate.split('/');
                 var startSelectedDate = Jalali(
-                        int.parse(splitStartDate[0]),
-                        int.parse(splitStartDate[1]),
-                        int.parse(splitStartDate[2])) ??
+                    int.parse(splitStartDate[0]),
+                    int.parse(splitStartDate[1]),
+                    int.parse(splitStartDate[2])) ??
                     Jalali.now();
                 setState(() {
                   if (!isSecondSelect) {
@@ -259,12 +259,12 @@ class _HandlePickerState extends State<HandlePicker>
         });
         picker = Container(
             child: TimePicker(
-          initTime: startSelectedInitTime,
-          onSelectDate: (time) {
-            widget.onSelect('$time');
-            Navigator.pop(context);
-          },
-        ));
+              initTime: startSelectedInitTime,
+              onSelectDate: (time) {
+                widget.onSelect('$time');
+                Navigator.pop(context);
+              },
+            ));
         break;
       case PickerType.date:
         Widget picked;
@@ -331,18 +331,18 @@ class _HandlePickerState extends State<HandlePicker>
       case PickerType.year:
         picker = Container(
             child: PersianYearPicker(
-          initDate: DateUtils.jalaliToString(
+              initDate: MyDateUtils.jalaliToString(
               Jalali.now().copy(year: int.parse(startSelectedInitDate))),
-          onSelectYear: (date) {
-            startSelectedInitDate = outPutFormat(date);
-            widget.onSelect('${date.formatter.yyyy}');
-            Navigator.pop(context);
-          },
-        ));
+              onSelectYear: (date) {
+                startSelectedInitDate = outPutFormat(date);
+                widget.onSelect('${date.formatter.yyyy}');
+                Navigator.pop(context);
+              },
+            ));
         break;
       case PickerType.month:
         picker = PersianMonthPicker(
-          initDate: DateUtils.jalaliToString(
+          initDate: MyDateUtils.jalaliToString(
               Jalali.now().copy(month: int.parse(startSelectedInitDate))),
           onSelectMonth: (date) {
             startSelectedInitDate = outPutFormat(date);

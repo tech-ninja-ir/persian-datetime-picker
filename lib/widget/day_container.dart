@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:persian_datetime_picker/utils/MyDateUtils.dart';
 import 'package:persian_datetime_picker/utils/consts.dart';
-import 'package:persian_datetime_picker/utils/date.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 class DayContainer extends StatefulWidget {
@@ -29,7 +29,7 @@ class _DayContainerState extends State<DayContainer> {
   @override
   void initState() {
     date = widget.date;
-    var dateUtiles = new DateUtils();
+    var dateUtiles = new MyDateUtils();
     isDisable = date != '' ? dateUtiles.isDisable(outPutFormat(date)) : false;
     super.initState();
   }
@@ -44,7 +44,7 @@ class _DayContainerState extends State<DayContainer> {
   void didUpdateWidget(DayContainer oldWidget) {
     if (oldWidget != widget) {
       date = widget.date;
-      var dateUtiles = new DateUtils();
+      var dateUtiles = new MyDateUtils();
       isDisable = date != '' ? dateUtiles.isDisable(outPutFormat(date)) : false;
     }
     super.didUpdateWidget(oldWidget);

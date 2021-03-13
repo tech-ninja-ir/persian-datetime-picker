@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:persian_datetime_picker/utils/MyDateUtils.dart';
 import 'package:persian_datetime_picker/utils/consts.dart';
-import 'package:persian_datetime_picker/utils/date.dart';
 
 class TimePicker extends StatefulWidget {
   final initTime;
@@ -19,7 +19,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
   var initMinute;
   String changeState = 'hour';
   bool isSlideForward = true;
-  var dateUtiles = new DateUtils();
+  var dateUtiles = new MyDateUtils();
   bool isDisable = false;
 
   @override
