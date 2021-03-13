@@ -1,7 +1,7 @@
 
   
 
-# A persian (farsi,shamsi) datetime picker for flutter, inspired by material datetime picker.
+# A persian (farsi,shamsi) datetime picker for flutter.
 
   
 
@@ -12,17 +12,17 @@
 A Flutter persian datetime picker inspired by material datetime picker and based on [shamsi_date](https://pub.dartlang.org/packages/shamsi_date).
 
   
-
-You can pick date / range date / time / date and time.
+it work with last version of flutter.
+thanks to [persian-datetime-picker](https://github.com/M-amir-M/persian-datetime-picker).
 
   
   
 
 # Screenshots
 
-|Date picker|Time picker|Range Date picker|Year picker|Month picker|
+|Date picker|Range Date picker|
 | ------- | ------- |------- | ------- |------- |
-|![]( screenshot_date.png) |![]( screenshot_time.png) |![]( screenshot_range_date.png) |![]( screenshot_year.png) |![]( screenshot_month.png) |
+|![]( screenshot_date.png) |![]( screenshot_range_date.png) |
 
   
   
