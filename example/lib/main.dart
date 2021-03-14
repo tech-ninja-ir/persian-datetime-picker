@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import 'package:persian_datetime_picker/utils/consts.dart';
+import 'package:persian_range_date_picker/persian_datetime_picker.dart';
+import 'package:persian_range_date_picker/utils/consts.dart';
 
 void main() => runApp(new MyApp());
 

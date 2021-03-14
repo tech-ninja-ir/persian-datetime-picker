@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:persian_datetime_picker/utils/MyDateUtils.dart';
-import 'package:persian_datetime_picker/utils/consts.dart';
+import 'package:persian_range_date_picker/utils/MyDateUtils.dart';
+import 'package:persian_range_date_picker/utils/consts.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 class DayContainer extends StatefulWidget {

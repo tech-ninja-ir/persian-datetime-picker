@@ -1,8 +1,8 @@
 library persian_datetime_picker;
 
 import 'package:flutter/material.dart';
-import 'package:persian_datetime_picker/utils/consts.dart';
-import 'package:persian_datetime_picker/widget/dialog.dart';
+import 'package:persian_range_date_picker/utils/consts.dart';
+import 'package:persian_range_date_picker/widget/dialog.dart';
 
 import 'handle_picker.dart';
 

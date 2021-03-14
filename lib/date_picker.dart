@@ -1,7 +1,7 @@
-import 'package:persian_datetime_picker/utils/consts.dart';
-import 'package:persian_datetime_picker/widget/render_table.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persian_range_date_picker/utils/consts.dart';
+import 'package:persian_range_date_picker/widget/render_table.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 class DatePicker extends StatefulWidget {

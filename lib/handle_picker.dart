@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persian_datetime_picker/date_picker.dart';
-import 'package:persian_datetime_picker/month_picker.dart';
-import 'package:persian_datetime_picker/time_picker.dart';
-import 'package:persian_datetime_picker/utils/MyDateUtils.dart';
-import 'package:persian_datetime_picker/year_picker.dart';
+import 'package:persian_range_date_picker/date_picker.dart';
+import 'package:persian_range_date_picker/month_picker.dart';
+import 'package:persian_range_date_picker/time_picker.dart';
+import 'package:persian_range_date_picker/utils/MyDateUtils.dart';
+import 'package:persian_range_date_picker/year_picker.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 import 'utils/consts.dart';
