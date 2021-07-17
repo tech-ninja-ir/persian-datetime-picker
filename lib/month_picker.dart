@@ -6,7 +6,7 @@ import 'package:shamsi_date/shamsi_date.dart';
 
 class PersianMonthPicker extends StatefulWidget {
   final initDate;
-  final Function(Jalali) onSelectMonth;
+  final Function(Jalali?)? onSelectMonth;
 
   PersianMonthPicker({this.initDate, this.onSelectMonth});
 
@@ -16,10 +16,10 @@ class PersianMonthPicker extends StatefulWidget {
 
 class _PersianMonthPickerState extends State<PersianMonthPicker>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  int selectedMonth;
-  List months;
+  AnimationController? controller;
+  Animation<double>? animation;
+  int? selectedMonth;
+  late List months;
   var initDate;
   String monthNFormat(Date d) {
     final f = d.formatter;
@@ -146,7 +146,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: rows,
+              children: rows as List<Widget>,
             ),
           ),
           Container(
@@ -160,7 +160,7 @@ class _PersianMonthPickerState extends State<PersianMonthPicker>
                     style: TextStyle(fontSize: 16, color: Global.color),
                   ),
                   onPressed: () {
-                    widget.onSelectMonth(initDate);
+                    widget.onSelectMonth!(initDate);
                   },
                 ),
                 FlatButton(
