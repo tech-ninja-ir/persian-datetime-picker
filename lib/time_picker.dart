@@ -4,7 +4,7 @@ import 'package:persian_range_date_picker/utils/consts.dart';
 
 class TimePicker extends StatefulWidget {
   final initTime;
-  final Function(String) onSelectDate;
+  final Function(String)? onSelectDate;
 
   TimePicker({this.initTime, this.onSelectDate});
 
@@ -13,8 +13,8 @@ class TimePicker extends StatefulWidget {
 }
 
 class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
   var initHour;
   var initMinute;
   String changeState = 'hour';
@@ -269,7 +269,7 @@ class _TimePickerState extends State<TimePicker> with TickerProviderStateMixin {
                   ),
                   onPressed: () {
                     if (!isDisable)
-                      widget.onSelectDate('$initHour:$initMinute');
+                      widget.onSelectDate!('$initHour:$initMinute');
                   },
                 ),
                 FlatButton(

@@ -3,10 +3,10 @@ import 'package:shamsi_date/shamsi_date.dart';
 
 class MyDateUtils {
   dynamic disable;
-  String min;
-  String max;
-  PickerType type;
-  List<String> dayNames;
+  String? min;
+  String? max;
+  PickerType? type;
+  late List<String?> dayNames;
 
   DateUtils() {
     disable = Global.disable;
@@ -94,8 +94,7 @@ class MyDateUtils {
   static Jalali stringToJalali(String date) {
     List split = date.split('/');
     return Jalali(
-            int.parse(split[0]), int.parse(split[1]), int.parse(split[2])) ??
-        Jalali.now();
+            int.parse(split[0]), int.parse(split[1]), int.parse(split[2]));
   }
 
   static String jalaliToString(Date date) {
@@ -107,11 +106,11 @@ class MyDateUtils {
   bool _isInRangeDate(String date) {
     bool isDisable = false;
 
-    if (isValidDate(date) && isValidDate(min) && !isDisable) {
-      isDisable = stringToJalali(date) <= stringToJalali(min);
+    if (isValidDate(date) && isValidDate(min!) && !isDisable) {
+      isDisable = stringToJalali(date) <= stringToJalali(min!);
     }
-    if (isValidDate(date) && isValidDate(max) && !isDisable) {
-      isDisable = stringToJalali(date) >= stringToJalali(max);
+    if (isValidDate(date) && isValidDate(max!) && !isDisable) {
+      isDisable = stringToJalali(date) >= stringToJalali(max!);
     }
 
     return isDisable;

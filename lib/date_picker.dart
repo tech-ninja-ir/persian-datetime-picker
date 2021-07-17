@@ -5,13 +5,13 @@ import 'package:persian_range_date_picker/widget/render_table.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 
 class DatePicker extends StatefulWidget {
-  final bool isRangeDate;
+  final bool? isRangeDate;
   final bool isSecondDate;
   final startSelectedDate;
   final endSelectedDate;
-  final Function(dynamic) onSelectDate;
-  final Function(String) onConfirmedDate;
-  final Function(String) onChangePicker;
+  final Function(dynamic)? onSelectDate;
+  final Function(String)? onConfirmedDate;
+  final Function(String)? onChangePicker;
 
   DatePicker(
       {this.isRangeDate,
@@ -27,13 +27,13 @@ class DatePicker extends StatefulWidget {
 }
 
 class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
-  Jalali initDate;
-  Jalali startSelectedDate;
-  Jalali endSelectedDate;
-  bool isRangeDate;
+  Jalali? initDate;
+  Jalali? startSelectedDate;
+  Jalali? endSelectedDate;
+  bool? isRangeDate;
 
   bool isSlideForward = true;
 
@@ -57,15 +57,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
           var splitStartDate = widget.startSelectedDate.split('/');
           var splitEndDate = widget.endSelectedDate.split('/');
           startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-              Jalali.now();
+                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
           endSelectedDate = Jalali(int.parse(splitEndDate[0]),
-                  int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ??
-              Jalali.now();
+                  int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
           initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-              Jalali.now();
+                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
         }
       });
     }
@@ -85,15 +82,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
       var splitStartDate = widget.startSelectedDate.split('/');
       var splitEndDate = widget.endSelectedDate.split('/');
       startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-              int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-          Jalali.now();
+              int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
       endSelectedDate = Jalali(int.parse(splitEndDate[0]),
-              int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ??
-          Jalali.now();
+              int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
       initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-              int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-          Jalali.now();
+              int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
     }
 
     controller =
@@ -108,22 +102,22 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
   _changeMonth(type) {
     setState(() {
       controller.forward(from: 0);
-      int year = int.parse(initDate.formatter.y);
-      int month = int.parse(initDate.formatter.m);
+      int year = int.parse(initDate!.formatter.y);
+      int month = int.parse(initDate!.formatter.m);
       //int day = int.parse(initDate.formatter.d);
       var newDate = initDate;
       switch (type) {
         case 'prev':
           isSlideForward = true;
 
-          newDate = initDate.copy(
+          newDate = initDate!.copy(
               month: month > 1 ? month - 1 : 12,
               year: month == 1 ? year - 1 : year);
           break;
         case 'next':
           isSlideForward = false;
 
-          newDate = initDate.copy(
+          newDate = initDate!.copy(
               month: month < 12 ? month + 1 : 1,
               year: month == 12 ? year + 1 : year);
           break;
@@ -197,17 +191,17 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
               decoration: BoxDecoration(
                 color: Global.color,
               ),
-              child: isRangeDate
+              child: isRangeDate!
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'از ${fullFormat(startSelectedDate)}',
+                          'از ${fullFormat(startSelectedDate!)}',
                           textAlign: TextAlign.right,
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                          'تا ${fullFormat(endSelectedDate)}',
+                          'تا ${fullFormat(endSelectedDate!)}',
                           textAlign: TextAlign.right,
                           style: TextStyle(color: Colors.white),
                         ),
@@ -217,12 +211,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          '${startSelectedDate.formatter.yyyy}',
+                          '${startSelectedDate!.formatter.yyyy}',
                           textAlign: TextAlign.right,
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                          '${monthDayFormat(startSelectedDate)}',
+                          '${monthDayFormat(startSelectedDate!)}',
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               color: Colors.white,
@@ -259,9 +253,9 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                               opacity: 1 - animation.value,
                               child: FlatButton(
                                 onPressed: () {
-                                  widget.onChangePicker('year');
+                                  widget.onChangePicker!('year');
                                 },
-                                child: Text(yearMonthNFormat(initDate)),
+                                child: Text(yearMonthNFormat(initDate!)),
                               ),
                             )),
                       ),
@@ -277,7 +271,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: weekDaysWidget,
+                    children: weekDaysWidget as List<Widget>,
                   ),
                 ),
                 Transform(
@@ -290,7 +284,7 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                       startSelectedDate: startSelectedDate,
                       endSelectedDate: endSelectedDate,
                       onSelect: (date) {
-                        widget.onSelectDate(date);
+                        widget.onSelectDate!(date);
                       },
                     ),
                   ),
@@ -309,12 +303,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
                     style: TextStyle(fontSize: 16, color: Global.color),
                   ),
                   onPressed: () {
-                    if (isRangeDate) {
-                      widget.onConfirmedDate(
-                          '${outPutFormat(startSelectedDate)} # ${outPutFormat(endSelectedDate)}');
+                    if (isRangeDate!) {
+                      widget.onConfirmedDate!(
+                          '${outPutFormat(startSelectedDate!)} # ${outPutFormat(endSelectedDate!)}');
                     } else {
-                      widget.onConfirmedDate(
-                          '${outPutFormat(startSelectedDate)}');
+                      widget.onConfirmedDate!(
+                          '${outPutFormat(startSelectedDate!)}');
                     }
                   },
                 ),
