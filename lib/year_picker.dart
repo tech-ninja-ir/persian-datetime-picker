@@ -84,8 +84,7 @@ class _PersianYearPickerState extends State<PersianYearPicker>
       var splitInitDate = widget.initDate.split('#');
       var splitStartDate = splitInitDate[0].split('/');
       initDate = Jalali(int.parse(splitStartDate[0]),
-              int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-          Jalali.now();
+              int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
 
       selectedYear = initDate.year;
     } else {

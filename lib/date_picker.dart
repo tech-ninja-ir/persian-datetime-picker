@@ -57,15 +57,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
           var splitStartDate = widget.startSelectedDate.split('/');
           var splitEndDate = widget.endSelectedDate.split('/');
           startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-              Jalali.now();
+                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
           endSelectedDate = Jalali(int.parse(splitEndDate[0]),
-                  int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ??
-              Jalali.now();
+                  int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
           initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-              Jalali.now();
+                  int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
         }
       });
     }
@@ -85,15 +82,12 @@ class _DatePickerState extends State<DatePicker> with TickerProviderStateMixin {
       var splitStartDate = widget.startSelectedDate.split('/');
       var splitEndDate = widget.endSelectedDate.split('/');
       startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-              int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-          Jalali.now();
+              int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
       endSelectedDate = Jalali(int.parse(splitEndDate[0]),
-              int.parse(splitEndDate[1]), int.parse(splitEndDate[2])) ??
-          Jalali.now();
+              int.parse(splitEndDate[1]), int.parse(splitEndDate[2]));
 
       initDate = startSelectedDate = Jalali(int.parse(splitStartDate[0]),
-              int.parse(splitStartDate[1]), int.parse(splitStartDate[2])) ??
-          Jalali.now();
+              int.parse(splitStartDate[1]), int.parse(splitStartDate[2]));
     }
 
     controller =

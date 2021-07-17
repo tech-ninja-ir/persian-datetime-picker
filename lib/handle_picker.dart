@@ -194,8 +194,7 @@ class _HandlePickerState extends State<HandlePicker>
                 var startSelectedDate = Jalali(
                     int.parse(splitStartDate[0]),
                     int.parse(splitStartDate[1]),
-                    int.parse(splitStartDate[2])) ??
-                    Jalali.now();
+                    int.parse(splitStartDate[2]));
                 setState(() {
                   if (!isSecondSelect) {
                     startSelectedInitDate = outPutFormat(date);
